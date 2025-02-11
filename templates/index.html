@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Rating</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+        .team-list {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .team-card {
+            background-color: #007bff;
+            color: white;
+            border-radius: 8px;
+            margin: 10px 0;
+            padding: 15px 20px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .team-card:hover {
+            background-color: #0056b3;
+            transform: translateY(-5px);
+        }
+        a {
+            text-decoration: none;
+        }
+        .full{
+            height: 100%;
+            width: 100%;
+            background-color: black;
+        }
+        .head1{
+            color: white;
+        }
+        .head2{
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="full">
+    <h1 class="head1">Rate the Teams</h1>
+    <h2 class="head2">Select a Team to Rate</h2>
+    <div class="team-list">
+        <a href="/rate/Team 1" class="team-card">Team 1</a>
+        <a href="/rate/Team 2" class="team-card">Team 2</a>
+        <a href="/rate/Team 3" class="team-card">Team 3</a>
+        <a href="/rate/Team 4" class="team-card">Team 4</a>
+        <a href="/rate/Team 5" class="team-card">Team 5</a>
+        <a href="/rate/Team 6" class="team-card">Team 6</a>
+        <a href="/rate/Team 7" class="team-card">Team 7</a>
+        <a href="/rate/Team 8" class="team-card">Team 8</a>
+        <a href="/rate/Team 9" class="team-card">Team 9</a>
+        <a href="/rate/Team 10" class="team-card">Team 10</a>
+    </div>
+    </div>
+</body>
+</html>

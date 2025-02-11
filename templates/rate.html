@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rate {{ team_name }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+            margin: 0;
+            padding: 100px;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        .star-rating {
+            font-size: 2em;
+            cursor: pointer;
+        }
+        .star {
+            color: lightgray;   
+            transition: color 0.2s;
+        }
+        .star:hover,
+        .star.selected {
+            color: gold;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .heading{
+            color:#fff;
+        }
+    </style>
+    <script>
+        let selectedRating = 0;
+
+        function setRating(rating) {
+            selectedRating = rating;
+            const stars = document.querySelectorAll('.star');
+            stars.forEach((star, index) => {
+                star.classList.toggle('selected', index < rating);
+            });
+        }
+
+        async function submitRating() {
+            if (selectedRating === 0) {
+                alert('Please select a rating!');
+                return;
+            }
+
+            const response = await fetch('/submit_rating', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ candidate: "{{ team_name }}", rating: selectedRating })
+            });
+
+            const result = await response.json();
+            alert(result.message);
+            window.location.href = '/';
+        }
+    </script>
+</head>
+<body>
+    <h1 class="heading">Rate {{ team_name }}</h1>
+    <div class="star-rating">
+        <span class="star" onclick="setRating(1)">&#9733;</span>
+        <span class="star" onclick="setRating(2)">&#9733;</span>
+        <span class="star" onclick="setRating(3)">&#9733;</span>
+        <span class="star" onclick="setRating(4)">&#9733;</span>
+        <span class="star" onclick="setRating(5)">&#9733;</span>
+    </div>
+    <button onclick="submitRating()">Submit Rating</button>
+</body>
+</html>
